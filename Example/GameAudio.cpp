@@ -27,7 +27,6 @@ void GameAudio::AudioCode(GameCode::GameData* gameData) {
 				speakers[i]->buffers = buffers;
 				speakers[i]->QueueBuffers();
 				speakers[i]->Play();
-				//while (speakers[i]->GetState(AL_SOURCE_STATE) == AL_PLAYING);
 				toPlayLock.lock();
 				toPlay.erase(toPlay.begin() + toPlay.size() - 1);
 				toPlayLock.unlock();
