@@ -43,7 +43,7 @@ add_library(EzGL
 	Texture3D.cpp
 	Texture3D.h
 	Texture3D.tpp
-  "../../Example/Assets.h")
+)
 
 target_compile_definitions(EzGL PUBLIC GL_API_GLAD_OPENGL_3)
 target_compile_definitions(EzGL PUBLIC WINDOW_API_GLFW)
