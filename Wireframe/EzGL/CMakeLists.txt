@@ -1,6 +1,5 @@
 ﻿cmake_minimum_required (VERSION 3.8)
 
-find_package(glad CONFIG REQUIRED)
 find_package(glfw3 CONFIG REQUIRED)
 find_path(STB_INCLUDE_DIRS stb.h)
 find_package(glm CONFIG REQUIRED)
@@ -48,7 +47,6 @@ add_library(EzGL
 target_compile_definitions(EzGL PUBLIC GL_API_GLAD_OPENGL_3)
 target_compile_definitions(EzGL PUBLIC WINDOW_API_GLFW)
 
-target_link_libraries(EzGL PUBLIC glad::glad)
 target_link_libraries(EzGL PUBLIC glfw)
 target_include_directories(EzGL PUBLIC ${STB_INCLUDE_DIRS})
 target_link_libraries(EzGL PUBLIC glm::glm)
