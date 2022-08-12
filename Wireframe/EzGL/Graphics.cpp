@@ -28,8 +28,8 @@ void Graphics::StaticInit(Graphics* graphics, const char* title, int width, int 
 	GraphicsCode(graphics);
 }
 
-void Graphics::WindowLibInit() {
-	glfwInit();
+bool Graphics::WindowLibInit() {
+	return glfwInit();
 }
 
 void Graphics::Draw(GLenum mode,GLsizei size, GLenum type) {

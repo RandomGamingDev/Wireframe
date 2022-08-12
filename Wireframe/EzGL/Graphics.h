@@ -38,7 +38,7 @@ public:
 	void Init(const char* title, int width, int height, GLFWmonitor* fullDisplay, void(*GraphicsCode)(Graphics*), std::any data);
 	static void StaticInit(Graphics* graphics, const char* title, int width, int height, GLFWmonitor* fullDisplay, void(*GraphicsCode)(Graphics*), std::any data, GLFWwindow** windowVar, const char** titleVar, int* widthVar, int* heightVar, std::any* dataVar);
 	#endif
-	static void WindowLibInit();
+	static bool WindowLibInit();
 	#ifdef GL_API_GLAD_OPENGL_3
 	static void Draw(GLenum mode, GLsizei size, GLenum type);
 	static void DrawInstanced(GLenum mode, GLsizei size, GLenum type, GLsizei numInstances);
