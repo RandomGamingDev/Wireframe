@@ -34,11 +34,21 @@ template <typename type>
 void Texture2D::Data(GLsizei width, GLsizei height, GLint level, GLint internalFormat, GLenum format, GLenum pixelType, type* pixels) {
 	GLint detail = level == 0 ? 1 : 2 * level;
 	glTexImage2D(bufferType, level, internalFormat, width / detail, height / detail, 0, format, pixelType, pixels);
+	if (level) {
+		GLint detail = 2 * level;
+		glTexImage2D(bufferType, level, internalFormat, width / detail, height / detail, 0, format, pixelType, pixels);
+	}
+	else {
+		glTexImage2D(bufferType, level, internalFormat, width, height, 0, format, pixelType, pixels);
+		glGenerateMipmap(bufferType);
+	}
 }
 
 template <typename type>
 void Texture2D::SubData(GLint xOffset, GLint yOffset, GLsizei width, GLsizei height, GLint level, GLenum format, GLenum pixelType, type* pixels) {
 	glTexSubImage2D(bufferType, level, xOffset, yOffset, width, height, 0, format, pixelType, pixels);
+	if (!level)
+		glGenerateMipmap(bufferType);
 }
 
 #endif

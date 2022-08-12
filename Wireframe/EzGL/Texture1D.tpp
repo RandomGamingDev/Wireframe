@@ -31,13 +31,21 @@ void Texture1D::Data(GLint level, GLint internalFormat, GLenum format, GLenum pi
 
 template <typename type>
 void Texture1D::Data(GLsizei width, GLint level, GLint internalFormat, GLenum format, GLenum pixelType, type* pixels) {
-	GLint detail = level == 0 ? 1 : 2 * level;
-	glTexImage1D(bufferType, level, internalFormat, width / detail, 0, format, pixelType, pixels);
+	if (level) {
+		GLint detail = 2 * level;
+		glTexImage1D(bufferType, level, internalFormat, width / detail, 0, format, pixelType, pixels);
+	}
+	else {
+		glTexImage1D(bufferType, level, internalFormat, width, 0, format, pixelType, pixels);
+		glGenerateMipmap(bufferType);
+	}
 }
 
 template <typename type>
 void Texture1D::SubData(GLint xOffset, GLsizei width, GLint level, GLenum format, GLenum pixelType, type* pixels) {
 	glTexSubImage1D(bufferType, level, xOffset, width, 0, format, pixelType, pixels);
+	if (!level)
+		glGenerateMipmap(bufferType);
 }
 
 #endif
