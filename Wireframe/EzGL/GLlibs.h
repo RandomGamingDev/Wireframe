@@ -7,6 +7,7 @@
 
 #ifdef WINDOW_API_GLFW
 #include <GLFW/glfw3.h>
+typedef GLFWwindow Window;
 #endif
 
 #endif

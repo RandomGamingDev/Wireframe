@@ -6,7 +6,7 @@
 #include "GameCode.h"
 
 // Set the width and height to the correct value
-void OnResize(GLFWwindow* window, int width, int height) {
+void OnResize(Window* window, int width, int height) {
 	if (width == 0 || height == 0) return;
 	Graphics::Viewport(0, 0, width, height);
 	Graphics* graphics = Graphics::GetWindowPointer<Graphics>(window);
