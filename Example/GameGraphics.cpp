@@ -40,7 +40,7 @@ void GameGraphics::GraphicsCode(Graphics* graphics) {
 	VBO<const float> paddlesVBO = VBO(Assets::paddleVerts, sizeof(Assets::paddleVerts), GL_STATIC_DRAW);
 	EBO<const unsigned int> paddlesEBO = EBO(Assets::paddleIndices, sizeof(Assets::paddleIndices), GL_STATIC_DRAW);
 	paddlesVAO.LinkAttrib<const float>(paddlesVBO.ID, 0, 3, GL_FLOAT, 7, 0);
-	paddlesVAO.LinkAttrib<GLfloat>(paddlesVBO.ID, 1, 4, GL_FLOAT, 7, 3);
+	paddlesVAO.LinkAttrib<const float>(paddlesVBO.ID, 1, 4, GL_FLOAT, 7, 3);
 
 	int paddlesUniformLocation = 0;
 	UBO paddlesUniform = UBO(&gameData->paddles, sizeof(gameData->paddles), GL_DYNAMIC_DRAW, "paddles", paddlesShader.ID, paddlesUniformLocation);
