@@ -3,7 +3,7 @@
 
 ### A powerful 0 cost no GUI game engine that provides control and speed to the programmer, while also providing ease of use.
 
-Compile this with CMake. (This comes with a demo of how to use this in Example, for which you'll have to drag the files from the Audio subdirectory next to the generated executable.
+Compile this with CMake. (This comes with a demo of how to use this in Example, for which you'll have to drag the files from the Audio subdirectory next to the generated executable, and drag the files from the Shaders subdirectory next to the generated executable.
 
 This project relies on: <br/>
 EzAL: https://github.com/RandomGamingDev/EzAL <br/>
