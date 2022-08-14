@@ -14,6 +14,7 @@ Shader::Shader(ShaderData shaders[], unsigned int numberOfShaders) {
 	}
 	glLinkProgram(ID);
 	LinkErrors();
+	Activate();
 }
 
 Shader::~Shader() {
