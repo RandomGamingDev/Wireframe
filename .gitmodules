@@ -1,6 +1,3 @@
-[submodule "Wireframe/JustEzGL"]
-	path = Wireframe/EzGL
-	url = https://github.com/RandomGamingDev/JustEzGL
-[submodule "Wireframe/JustEzAL"]
-	path = Wireframe/EzAL
-	url = https://github.com/RandomGamingDev/JustEzAL
+[submodule "JustWireframe"]
+	path = Wireframe
+	url = https://github.com/RandomGamingDev/JustWireframe
