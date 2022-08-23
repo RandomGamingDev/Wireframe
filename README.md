@@ -7,7 +7,7 @@ Compile this with CMake. (This comes with a demo of how to use this in Example, 
 
 You can find extensions (basically just small pieces of code that you can include in your project to make developing stuff easier) in the extensions subdirectory! Just plop them into a folder that you can include stuff from and include them!
 Here are the currently available extensions(, and just like with the rest of the project I will be happy to except more extesions or changes to extesions):<br/>
-Pixy (Credit to Nyaaborn for the name, you can find his github here: https://github.com/Nyaaboron)
+- Pixy (Credit to Nyaaborn for the name, you can find his github here: https://github.com/Nyaaboron)
 
 This project relies on: <br/>
 EzAL: https://github.com/RandomGamingDev/EzAL <br/>
