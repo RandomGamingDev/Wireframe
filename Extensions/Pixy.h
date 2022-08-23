@@ -1,6 +1,10 @@
 #ifndef PIXY_HEADER
 #define PIXY_HEADER
 
+#include <Wireframe.h>
+#include <fmt/core.h>
+#include <array>
+
 template <typename type>
 class Pixy {
 public:
