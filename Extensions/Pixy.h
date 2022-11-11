@@ -41,7 +41,6 @@ public:
 		" };
 		std::string fragShader = { fmt::format(fmt::runtime("\
 			#version 330 core\n\
-			#extension ARB_arrays_of_arrays : require\n\
 			\
 			#define SCREEN_WIDTH {}\n\
 			#define SCREEN_HEIGHT {}\n\
@@ -51,11 +50,11 @@ public:
 			out vec4 FragColor;\
 			\
 			layout(packed) uniform tiles {{\
-				vec4 tileColors[TILEMAP_WIDTH][TILEMAP_HEIGHT];\
+				vec4 tileColors[TILEMAP_WIDTH * TILEMAP_HEIGHT];\
 			}};\
 			\
 			void main() {{\
-				FragColor = tileColors[int(gl_FragCoord.x) / (SCREEN_WIDTH / TILEMAP_WIDTH)][int(gl_FragCoord.y) / (SCREEN_HEIGHT / TILEMAP_HEIGHT)];\
+				FragColor = tileColors[(int(gl_FragCoord.x) / (SCREEN_WIDTH / TILEMAP_WIDTH)) * TILEMAP_WIDTH + int(gl_FragCoord.y) / (SCREEN_HEIGHT / TILEMAP_HEIGHT)];\
 			}}"),
 			screenWidth, screenHeight, tilemapWidth, tilemapHeight) };
 		ShaderData shaders[] = {
