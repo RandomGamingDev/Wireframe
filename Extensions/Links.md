@@ -24,5 +24,5 @@
     boost is a collection of C++ libraries for practically everything
 - [soci](https://github.com/SOCI/soci)
     soci is for dealing with databases
-- [FlatBuffers]https://github.com/google/flatbuffers
+- [FlatBuffers](https://github.com/google/flatbuffers)
     FlatBuffers is for serialization
