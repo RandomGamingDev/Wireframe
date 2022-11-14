@@ -35,6 +35,8 @@ Here are the currently available extensions(, and just like with the rest of the
     soci is for dealing with databases
 - [FlatBuffers](https://github.com/google/flatbuffers)
     FlatBuffers is for serialization
+- [Firebase C++ SDK](https://github.com/firebase/firebase-cpp-sdk)
+    Firebase C++ SDK is for communicating with the Firebase API for its different features, some common examples are ads, analytics, verification and databases.
 
 This project relies on: <br/>
 EzAL: https://github.com/RandomGamingDev/EzAL <br/>
