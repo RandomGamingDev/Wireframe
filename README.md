@@ -8,7 +8,7 @@ Compile this with CMake. (This comes with a demo of how to use this in Example, 
 You can find extensions (basically just small pieces of code that you can include in your project to make developing stuff easier) in the extensions subdirectory! Just plop them into a folder that you can include stuff from and include them!
 Here are the currently available extensions(, and just like with the rest of the project I will be happy to except more extesions or changes to extesions):<br/>
 - Pixy (Credit to Nyaaborn for the name, you can find his github here: https://github.com/Nyaaboron)
-    Pixy is for rendering directly from an array on the CPU, allowing you to make retro games similarly to how they were actually made and also a lot more easily
+    Pixy is for rendering directly from an array on the CPU, allowing you to make retro games similarly to how they were actually made.
 - [box2d](https://github.com/erincatto/box2d)
     box2d is for 2d physics
 - [tmxlite](https://github.com/fallahn/tmxlite)
