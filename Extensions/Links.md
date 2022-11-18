@@ -28,3 +28,5 @@
     FlatBuffers is for serialization
 - [Firebase C++ SDK](https://github.com/firebase/firebase-cpp-sdk)
     Firebase C++ SDK is for communicating with the Firebase API for its different features, some common examples are ads, analytics, verification and databases.
+- [OIS](https://github.com/wgois/OIS)
+    OIS is for nice cross-platform input.
