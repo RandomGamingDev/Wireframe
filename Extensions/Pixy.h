@@ -79,12 +79,22 @@ public:
 		ubo->SubData(tilemap, 0, tilemapSize);
 	}
 
-	void Draw() {
+	void Bind() {
 		shader->Activate();
 		vao->Bind();
 		vbo->Bind();
 		ebo->Bind();
 		ubo->Bind();
+	}
+
+	void Unbind() {
+		vao->Unbind();
+		vbo->Unbind();
+		ebo->Unbind();
+		ubo->Unbind();
+	}
+
+	void Draw() {
 		Graphics::Draw(GL_TRIANGLES, arrsize(PixyIndices), GL_UNSIGNED_INT);
 	}
 };
