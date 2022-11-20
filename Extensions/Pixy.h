@@ -6,31 +6,36 @@
 #include <array>
 
 template <typename type>
+type Flag(std::string flag, type toReturn) {
+	std::cout << flag;
+	return toReturn;
+}
+
+template <typename type>
 class Pixy {
 public:
-	static const std::array<float, 8> PixyVerts;
-	static const std::array<unsigned int, 6> PixyIndices;
-	Shader* shader;
-	VAO* vao = new VAO();
-	VBO<float>* vbo = new VBO(const_cast<float*>(PixyVerts.data()), sizeof(PixyVerts), GL_STATIC_DRAW);
-	EBO<unsigned int>* ebo = new EBO(const_cast<unsigned int*>(PixyIndices.data()), sizeof(PixyIndices), GL_STATIC_DRAW);
-	UBO* ubo;
+	static const std::array<float, 8> verts;
+	static const std::array<unsigned int, 6> indices;
+	const std::string vertShader;
+	const std::string fragShader;
+	std::array<ShaderData, 2> shaders;
+	Shader shader;
+	VAO vao = VAO();
+	VBO<float> vbo = VBO(const_cast<float*>(this->verts.data()), sizeof(this->verts), GL_STATIC_DRAW);
+	EBO<unsigned int> ebo = EBO(const_cast<unsigned int*>(this->indices.data()), sizeof(this->indices), GL_STATIC_DRAW);
+	UBO ubo;
 	size_t tilemapSize;
 
 	Pixy(
 		type tilemap,
-		size_t tilemapSize,
+		unsigned int tilemapSize,
 		unsigned int uboIndex,
 		int screenWidth,
 		int screenHeight,
 		int tilemapWidth,
 		int tilemapHeight
-	) {
-		this->tilemapSize = tilemapSize;
-
-		vao->LinkAttrib<float>(vbo->ID, 0, 2, GL_FLOAT, 2, 0);
-
-		std::string vertShader = { "\
+	) :
+		vertShader("\
 			#version 330 core\n\
 			\
 			layout(location = 0) in vec2 aPos;\
@@ -38,8 +43,8 @@ public:
 			void main() {\
 				gl_Position = vec4(aPos, 0.0, 1.0);\
 			}\
-		" };
-		std::string fragShader = { fmt::format(fmt::runtime("\
+		"),
+		fragShader(fmt::format("\
 			#version 330 core\n\
 			\
 			#define SCREEN_WIDTH {}\n\
@@ -55,52 +60,46 @@ public:
 			\
 			void main() {{\
 				FragColor = tileColors[(int(gl_FragCoord.x) / (SCREEN_WIDTH / TILEMAP_WIDTH)) * TILEMAP_WIDTH + int(gl_FragCoord.y) / (SCREEN_HEIGHT / TILEMAP_HEIGHT)];\
-			}}"),
-			screenWidth, screenHeight, tilemapWidth, tilemapHeight) };
-		ShaderData shaders[] = {
-			ShaderData(vertShader.c_str(), GL_VERTEX_SHADER, "VERT"),
-			ShaderData(fragShader.c_str(), GL_FRAGMENT_SHADER, "FRAG")
-		};
-		this->shader = new Shader(shaders, arrsize(shaders));
-
-		this->ubo = new UBO(tilemap, tilemapSize, GL_STATIC_DRAW, "tiles", shader->ID, uboIndex);
-		this->ubo->BindBase(uboIndex);
-	}
-
-	~Pixy() {
-		delete shader;
-		delete vao;
-		delete vbo;
-		delete ebo;
-		delete ubo;
+			}}"
+		, screenWidth, screenHeight, tilemapWidth, tilemapHeight)),
+		shaders({
+			ShaderData(this->vertShader.c_str(), GL_VERTEX_SHADER, "VERT"),
+			ShaderData(this->fragShader.c_str(), GL_FRAGMENT_SHADER, "FRAG")
+			}),
+		shader(Shader(this->shaders.data(), shaders.size())),
+		ubo(UBO(tilemap, tilemapSize, GL_STATIC_DRAW, "tiles", shader.ID, uboIndex))
+	{
+		this->tilemapSize = tilemapSize;
+		this->vao.LinkAttrib<float>(vbo.ID, 0, 2, GL_FLOAT, 2, 0);
+		this->ubo.BindBase(uboIndex);
 	}
 
 	void Update(type tilemap) {
-		ubo->SubData(tilemap, 0, tilemapSize);
+		this->ubo.SubData(tilemap, 0, tilemapSize);
 	}
 
 	void Bind() {
-		shader->Activate();
-		vao->Bind();
-		vbo->Bind();
-		ebo->Bind();
-		ubo->Bind();
+		this->shader.Activate();
+		this->vao.Bind();
+		this->vbo.Bind();
+		this->ebo.Bind();
+		this->ubo.Bind();
 	}
 
 	void Unbind() {
-		vao->Unbind();
-		vbo->Unbind();
-		ebo->Unbind();
-		ubo->Unbind();
+		this->vao.Unbind();
+		this->vbo.Unbind();
+		this->ebo.Unbind();
+		this->ubo.Unbind();
 	}
 
 	void Draw() {
-		Graphics::Draw(GL_TRIANGLES, arrsize(PixyIndices), GL_UNSIGNED_INT);
+		Graphics::Draw(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT);
 	}
 };
 
 template <typename type>
-const std::array<float, 8> Pixy<type>::PixyVerts = {
+const std::array<float, 8> Pixy<type>::verts = {
 		 1.0f,  1.0f,
 		 1.0f, -1.0f,
 		-1.0f,  1.0f,
@@ -108,7 +107,7 @@ const std::array<float, 8> Pixy<type>::PixyVerts = {
 };
 
 template <typename type>
-const std::array<unsigned int, 6> Pixy<type>::PixyIndices = {
+const std::array<unsigned int, 6> Pixy<type>::indices = {
 		2, 3, 1,
 		2, 1, 0
 };
