@@ -6,12 +6,6 @@
 #include <array>
 
 template <typename type>
-type Flag(std::string flag, type toReturn) {
-	std::cout << flag;
-	return toReturn;
-}
-
-template <typename type>
 class Pixy {
 public:
 	static const std::array<float, 8> verts;
