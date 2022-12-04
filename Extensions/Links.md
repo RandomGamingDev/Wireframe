@@ -2,8 +2,8 @@
 
 - [flecs](https://github.com/SanderMertens/flecs)
     flecs is an ECS system for easily dealing with and using ECS in a monitorable and debuggable way in your own project
-- [flecs-systems-admin](https://github.com/flecs-hub/flecs-systems-admin)
-    flecs-systems-admin is a way to easily monitor and switch on and off different parts of your code that rely in flecs
+- [Flecs Explorer](https://github.com/flecs-hub/explorer)
+    Flecs Explorer is a way to easily monitor and switch on and off different parts of your code that rely in flecs
 - [OBJ-Loader](https://github.com/Bly7/OBJ-Loader)
     OBJ-Loader is a simple header only obj file loader
 - [box2d](https://github.com/erincatto/box2d)
