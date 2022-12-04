@@ -9,7 +9,7 @@ You can find extensions (basically just small pieces of code that you can includ
 Here are the currently available extensions(, and just like with the rest of the project I will be happy to except more extesions or changes to extesions):<br/>
 - Pixy (Credit to Nyaaborn for the name, you can find his github here: https://github.com/Nyaaboron)
     Pixy is for rendering directly from an array on the CPU, allowing you to make retro games similarly to how they were actually made.
-- Pixelator
+- Pixelator </br>
     Pixelator is made for rendering to a lower quality (or higher quality, but it wouldn't really do much of anything) FBO, allowing you to easily pixelate your game quickly and easily and/or spend less processing power on graphics since there would be less pixels to process.
 - [box2d](https://github.com/erincatto/box2d)
     box2d is for 2d physics
