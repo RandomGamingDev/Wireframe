@@ -5,6 +5,8 @@
 
 Compile this with CMake. (This comes with a demo of how to use this in Example, for which you'll have to drag the files from the Audio subdirectory next to the generated executable, and drag the files from the Shaders subdirectory next to the generated executable. There's also a precompiled version of the demo for Windows x64 at https://randomgamingdev.itch.io/pong)
 
+You can download an x64 Windows executable for the demo at https://randomgamingdev.itch.io/pong.
+
 You can find extensions (basically just small pieces of code that you can include in your project to make developing stuff easier) in the extensions subdirectory! Just plop them into a folder that you can include stuff from and include them!
 Here are the currently available extensions(, and just like with the rest of the project I will be happy to except more extesions or changes to extesions):<br/>
 - Pixy (Credit to Nyaaborn for the name, you can find his github here: https://github.com/Nyaaboron)
