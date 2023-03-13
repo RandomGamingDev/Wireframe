@@ -17,6 +17,8 @@ Here are the currently available extensions(, and just like with the rest of the
     Pixy is for rendering directly from an array on the CPU, allowing you to make retro games similarly to how they were actually made.
 - Pixelator
     Pixelator is made for rendering to a lower quality (or higher quality, but it wouldn't really do much of anything) FBO, allowing you to easily pixelate your game quickly and easily and/or spend less processing power on graphics since there would be less pixels to process.
+- [BasicECS](https://github.com/RandomGamingDev/BasicECS)
+    BasicECS is a super simple and easy to use header only ECS library, perfect for whatever your needs are
 - [flecs](https://github.com/SanderMertens/flecs)
     flecs is an ECS system for easily dealing with and using ECS in a monitorable and debuggable way in your own project
 - [Flecs Explorer](https://github.com/flecs-hub/explorer)
